@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="reply">
+  <insert id="insertReply">
+    insert into myreply (rno,bno,replytext,replyer) values
+    (myreply_seq.nextval, #{bno}, #{replytext}, #{replyer})
+  </insert>
+  
+  <select id="listReply" 
+  resultType="com.example.spring03.model.board.dto.ReplyDTO">
+    select rno,bno,replytext,replyer,regdate,updatedate
+    from myreply
+    where bno=#{bno}
+    order by rno
+  </select>
+  
+  <delete id="delete">
+  	delete from myreply
+  	where rno=#{rno} and bno=#{bno}
+  </delete>
+  
+  
+	
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="reservation">
+  <select id="list"
+  resultType="com.example.spring03.model.reservation.dto.ReservationDTO">
+    select * from reservation
+    where userid=#{userid}
+    order by idx desc
+  </select>
+   
+  <select id="insert">
+    insert into reservation (idx, userid,name,email,hp,op1,address,memo,chk)
+    values ((select nvl(max(idx)+1,1) from reservation),#{userid},#{name},#{email},#{hp},#{op1},#{address},#{memo},#{chk})
+  </select>
+  
+  <select id="adlist"
+  resultType="com.example.spring03.model.reservation.dto.ReservationDTO">
+    select * from reservation order by idx
+  </select>
+  
+  <select id="view"
+  resultType="com.example.spring03.model.reservation.dto.ReservationDTO">
+  	select * from reservation where idx=#{idx}
+  </select>
+  
+  <update id="check">
+  	update reservation set
+	chk='확인'
+	where idx=#{idx}
+  </update>
+  
+  <delete id="delete">
+  	delete from reservation
+  	where idx=#{idx}
+  </delete>
+ 
+</mapper>
+
+
+
+

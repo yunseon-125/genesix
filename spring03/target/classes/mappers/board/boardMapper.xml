@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="board">
+
+  <select id="list"
+  resultType="com.example.spring03.model.board.dto.BoardDTO">
+    select * from myboard
+	order by case when adck in ('0') then 0 else 1 end, bno
+  </select>
+  
+  <select id="write">
+  	insert into myboard (bno, writer, title, content, adck)
+  	values ((select nvl(max(bno)+1,1) from myboard), #{writer}, #{title}, #{content}, '1')
+  </select>
+  
+    <select id="adwrite">
+  	insert into myboard (bno, writer, title, content, adck)
+  	values ((select nvl(max(bno)+1,1) from myboard), #{writer}, #{title}, #{content}, '0')
+  </select>
+  
+	<select id="view"
+	resultType="com.example.spring03.model.board.dto.BoardDTO">
+	select * from myboard where bno=#{bno}
+	</select>
+	
+	<update id="update">
+		update myboard set
+		title=#{title}, content=#{content}
+		where bno=#{bno}
+	</update>
+	
+	<delete id="delete">
+		delete from myboard
+		where bno=#{bno}
+	</delete>
+	
+	<update id="viewcnt">
+    update myboard set viewcnt=viewcnt+1
+    where bno=#{bno}
+ 	</update>
+
+
+</mapper>

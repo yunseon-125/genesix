@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="member">
+  <select id="login_check" 
+  parameterType="com.example.spring03.model.member.dto.MemberDTO"
+  resultType="String">
+    select name from mymember
+    where userid=#{userid} and passwd=#{passwd}
+  </select>
+  
+  <select id="viewMember" 
+  resultType="com.example.spring03.model.member.dto.MemberDTO">
+    select * from mymember
+    where userid=#{userid}
+  </select>
+	<!-- dd -->
+  <select id="insert">
+    insert into mymember (userid,passwd,name,email)
+    values (#{userid},#{passwd},#{name},#{email})
+  </select>
+  
+  <select id="idcheck" resultType="String">
+    select userid from mymember
+    where userid=#{userid}
+  </select>
+  
+  <select id="findid" 
+  parameterType="com.example.spring03.model.member.dto.MemberDTO"
+  resultType="String">
+    select userid from mymember
+    where name=#{name} and email=#{email}
+  </select>
+  
+    <select id="findpasswd" 
+    parameterType="com.example.spring03.model.member.dto.MemberDTO"
+    resultType="String">
+    select passwd from mymember
+    where userid=#{userid} and email=#{email} and name=#{name}
+  </select>
+  
+   <update id="update">
+   	update mymember set
+   	passwd=#{passwd}, email=#{email}, name=#{name}, address=#{address}
+   	where userid=#{userid}
+   </update>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

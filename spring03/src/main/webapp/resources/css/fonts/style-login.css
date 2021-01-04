@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.wrap {
+	float:right;
+	width:100%;
+}
+.form-wrap {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: auto;
+    margin-top: 200px;
+    background: #333333;
+    opacity: 0.7;
+    padding: 5px;
+    overflow: hidden;
+    
+    /* 배경 색상  */
+}
+.button-wrap {
+    width: 230px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 50 600px 9px #400040;
+    border-radius: 30px;
+    border-color: #808080;
+}
+.togglebtn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    color: #cccccc;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    border-radius: 30px;
+    border: 3px solid white;
+    transition: .5s;
+    /* login join 버튼 */
+}
+.input-group {
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+    
+}
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+    background: transparent;
+   color: white;
+}
+.submit {
+	color:white;
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    border: 1px solid white;
+    border-radius: 30px;
+    background: transparent;
+    /*  결과 색상 */
+}
+
+span {
+    color: #400040;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+#login {
+    left: 50px;
+}
+#register {
+    left: 450px;
+}
+input::-webkit-input-placeholder {
+    color: white;
+}
